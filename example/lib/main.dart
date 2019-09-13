@@ -54,8 +54,11 @@ class _MyHomePageState extends State<MyHomePage> {
           SliderIndicator(
             length: 3,
             activeIndex: _currentIndex.round(),
-            displayIndicatorIcon: Icons.ac_unit,
-            displayIndicatorActiveIcon: Icons.access_alarms,
+            indicator: Icon(
+              Icons.ac_unit,
+              size: 50,
+            ),
+            activeIndicator: Icon(Icons.access_alarms),
           )
         ],
       ),

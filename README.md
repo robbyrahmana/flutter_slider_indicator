@@ -14,3 +14,13 @@ SliderIndicator(
 ## Example
 
 Please find example in here: [Example](example/lib/main.dart)
+
+## Available parameter
+
+| Parameter                  | Required | Default Value               |
+| -------------------------- | -------- | --------------------------- |
+| int length                 | true     |                             |
+| int activeIndex            | true     |                             |
+| Widget indicator           | true     |                             |
+| Widget activeIndicator     | true     |                             |
+| Duration animationDuration | false    | Duration(milliseconds: 250) |
