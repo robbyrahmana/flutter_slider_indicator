@@ -1,17 +1,44 @@
 import 'package:flutter/material.dart';
 
+/// Slider indicator widget's class
 class SliderIndicator extends StatefulWidget {
-  SliderIndicator(
-      {required this.length,
+  /// Animated indicator for sliders / carousels
+  ///
+  /// Required parameters:
+  ///
+  /// length - Double precise number that expressing widget's length
+  ///
+  /// activeIndex - Integer number that representing the current slide
+  ///
+  /// indicator - Widget that representing inactive slides indicators
+  ///
+  /// activeIndicator - Widget that representing current slide indicator
+  ///
+  /// Optional parameters:
+  ///
+  /// animationDuration - Duration of animation (default: 250ms)
+  const SliderIndicator(
+      {Key? key,
+      required this.length,
       required this.activeIndex,
       required this.indicator,
       required this.activeIndicator,
-      this.animationDuration = const Duration(milliseconds: 250)});
+      this.animationDuration = const Duration(milliseconds: 250)})
+      : super(key: key);
 
+  /// Widget's length
   final int length;
+
+  /// Current slide
   final int activeIndex;
+
+  /// Widget that representing inactive slides indicators
   final Widget indicator;
+
+  /// Widget that representing current slide indicator
   final Widget activeIndicator;
+
+  /// Duration of animation
   final Duration animationDuration;
 
   @override
@@ -19,8 +46,8 @@ class SliderIndicator extends StatefulWidget {
 }
 
 class _SliderIndicatorState extends State<SliderIndicator> {
-  GlobalKey _indicatorKey = GlobalKey();
-  GlobalKey _activeIndicatorKey = GlobalKey();
+  final GlobalKey _indicatorKey = GlobalKey();
+  final GlobalKey _activeIndicatorKey = GlobalKey();
   Size _indicatorSize = Size.zero;
   Size _activeIndicatorSize = Size.zero;
 
@@ -31,10 +58,10 @@ class _SliderIndicatorState extends State<SliderIndicator> {
     WidgetsBinding.instance!.addPostFrameCallback(_onBuildCompleted);
   }
 
-  _onBuildCompleted(_) {
-    final RenderBox? indicatorBox =
+  void _onBuildCompleted(_) {
+    final indicatorBox =
         _indicatorKey.currentContext!.findRenderObject() as RenderBox?;
-    final RenderBox? activeIndicatorBox =
+    final activeIndicatorBox =
         _activeIndicatorKey.currentContext!.findRenderObject() as RenderBox?;
     setState(() {
       _indicatorSize = indicatorBox!.size;
@@ -44,9 +71,9 @@ class _SliderIndicatorState extends State<SliderIndicator> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _listBullet = [];
+    final _listBullet = <Widget>[];
 
-    for (int i = 0; i < widget.length; i++) {
+    for (var i = 0; i < widget.length; i++) {
       _listBullet.add(AnimatedOpacity(
         opacity: widget.activeIndex == i ? 0.0 : 1.0,
         duration: widget.animationDuration,
@@ -58,11 +85,11 @@ class _SliderIndicatorState extends State<SliderIndicator> {
       children: <Widget>[
         Container(
           key: _indicatorKey,
-          child: Opacity(opacity: 0.0, child: widget.indicator),
+          child: Opacity(opacity: 0, child: widget.indicator),
         ),
         Container(
           key: _activeIndicatorKey,
-          child: Opacity(opacity: 0.0, child: widget.activeIndicator),
+          child: Opacity(opacity: 0, child: widget.activeIndicator),
         ),
         Row(
           mainAxisSize: MainAxisSize.min,

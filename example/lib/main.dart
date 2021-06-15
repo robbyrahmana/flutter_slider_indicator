@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_indicator/flutter_slider_indicator.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key key}):super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => MaterialApp(
       title: 'Flutter Slider Indicator',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Slider Indicator'),
+      home: const MyHomePage(title: 'Flutter Slider Indicator'),
     );
-  }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
@@ -25,7 +25,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _controller = PageController();
+  final _controller = PageController();
   double _currentIndex = 0;
 
   @override
@@ -44,21 +44,21 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
             child: PageView(
               controller: _controller,
-              children: <Widget>[
-                Center(child: Text("First Page")),
-                Center(child: Text("Second Page")),
-                Center(child: Text("Third Page")),
+              children: const <Widget>[
+                Center(child: Text('First Page')),
+                Center(child: Text('Second Page')),
+                Center(child: Text('Third Page')),
               ],
             ),
           ),
           SliderIndicator(
             length: 3,
             activeIndex: _currentIndex.round(),
-            indicator: Icon(
+            indicator: const Icon(
               Icons.ac_unit,
               size: 50,
             ),
-            activeIndicator: Icon(Icons.access_alarms),
+            activeIndicator: const Icon(Icons.access_alarms),
           )
         ],
       ),
