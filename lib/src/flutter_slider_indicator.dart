@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class SliderIndicator extends StatefulWidget {
   SliderIndicator(
-      {@required this.length,
-      @required this.activeIndex,
-      @required this.indicator,
-      @required this.activeIndicator,
+      {required this.length,
+      required this.activeIndex,
+      required this.indicator,
+      required this.activeIndicator,
       this.animationDuration = const Duration(milliseconds: 250)});
 
   final int length;
@@ -28,17 +28,17 @@ class _SliderIndicatorState extends State<SliderIndicator> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback(_onBuildCompleted);
+    WidgetsBinding.instance!.addPostFrameCallback(_onBuildCompleted);
   }
 
   _onBuildCompleted(_) {
-    final RenderBox indicatorBox =
-        _indicatorKey.currentContext.findRenderObject();
-    final RenderBox activeIndicatorBox =
-        _activeIndicatorKey.currentContext.findRenderObject();
+    final RenderBox? indicatorBox =
+        _indicatorKey.currentContext!.findRenderObject() as RenderBox?;
+    final RenderBox? activeIndicatorBox =
+        _activeIndicatorKey.currentContext!.findRenderObject() as RenderBox?;
     setState(() {
-      _indicatorSize = indicatorBox.size;
-      _activeIndicatorSize = activeIndicatorBox.size;
+      _indicatorSize = indicatorBox!.size;
+      _activeIndicatorSize = activeIndicatorBox!.size;
     });
   }
 
