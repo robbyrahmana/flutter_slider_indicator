@@ -1,6 +1,6 @@
 name: flutter_slider_indicator
 description: Slider Indicator Widget built in for flutter. Please press star in my repo if you like it. Thank you.
-version: 0.2.0
+version: 1.0.0
 author: Robby Rahmana <robbyrahmana79@gmail.com>
 homepage: https://github.com/robbyrahmana/flutter_slider_indicator
 
@@ -12,6 +12,6 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  effective_dart: ^1.3.1
+  effective_dart: ^1.3.2
   flutter_test:
     sdk: flutter
